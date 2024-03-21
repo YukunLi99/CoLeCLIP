@@ -1,0 +1,43 @@
+METHOD:
+  NAME: DualPrompt
+  VIS: True
+  TXT: False
+  E_LAYER: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]  # expert layers
+  G_LAYER: [0, 1, 2, 3, 4, 5, 6, 7]    # general layers
+  PROMPT_PARAM: [11, 20, 6]  # 1)  # tasks 2) e-prompt pool length 3)  g-prompt pool length
+  STAGE_STEP: None
+  USE_VOC: False
+
+SAVE: ckpt/exp_DualPrompt_vit_14
+
+#model
+MODEL:
+  FINETUNE_MODE: peft    # full tuning
+  TRAIN_MODE: extra    # both image and text encoder
+  VLM:
+    NAME: ViT-L/14
+    LOAD: ./weights/clip/ViT-L-14.pt
+
+DATASETS:
+  DATA_LOCATION: ./Image
+  TRAIN: [Aircraft]
+  EVAL:  [Aircraft, Caltech101 , CIFAR100, DTD, EuroSAT, Flowers, Food, MNIST, OxfordPet, StanfordCars, SUN397]
+
+TRAIN:
+  BATCH_SIZE: 128
+
+TEST:
+  BATCH_SIZE: 512
+
+SOLVER:
+  SEED: 42
+  LR: 1e-2
+  LS: 0.0 #0.2
+  # WARMUP_LENGTH: 100
+  # BETA2: 0.999
+  # ITERATIONS: 1000
+  EPOCHS: 20
+  LOSS_INTERVAL: 20
+  EVAL_EVERY_EPOCH: True
+  SCHEDULE_UNIT: none #epoch
+VERSION: 2

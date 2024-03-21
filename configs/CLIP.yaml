@@ -1,0 +1,35 @@
+METHOD:
+  NAME: CLIP
+
+SAVE: ckpt/exp_clip
+
+#model
+MODEL:
+  FINETUNE_MODE: full    # full tuning
+  TRAIN_MODE: whole    # both image and text encoder
+  VLM:
+    NAME: ViT-B/16
+    LOAD: ./weights/clip/ViT-B-16.pt
+
+DATASETS:
+  DATA_LOCATION: ./Image
+  TRAIN: [Aircraft]
+  EVAL:  [Aircraft, Caltech101 , CIFAR100, DTD, EuroSAT, Flowers, Food, MNIST, OxfordPet, StanfordCars, SUN397]
+
+TRAIN:
+  BATCH_SIZE: 64
+
+TEST:
+  BATCH_SIZE: 512
+
+
+SOLVER:
+  SEED: 42
+  LR: 5e-5
+  LS: 0.2
+  WARMUP_LENGTH: 100
+  BETA2: 0.999
+  ITERATIONS: 1000
+  LOSS_INTERVAL: 20
+  EVAL_EVERY_EPOCH: False
+VERSION: 2

@@ -1,0 +1,53 @@
+METHOD:
+  NAME: CoLeCLIP
+  VIS: False
+  TXT: True
+  PET_CLS: Prefix      # ["Adapter", "LoRA", "Prefix"]
+  ADAPT_BLOCKS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] #[0, 1, 2, 3, 4]
+
+  PET_KWARGS:
+    length: 10
+    key_scale: None
+    val_scale: None
+    compensatory: true
+    position: 0
+  
+  NUM_EMAS: 0
+  EMA_DECAY: 0.9999
+  STAGE_STEP: 0.5
+  USE_VOC: True
+  NUM_PROMPTS_PER_TASK: 1
+
+SAVE: ckpt/exp_CoLeCLIP_prefix
+
+#model
+MODEL:
+  FINETUNE_MODE: peft    # full tuning
+  TRAIN_MODE: extra    # both image and text encoder
+  VLM:
+    NAME: ViT-B/16
+    LOAD: ./weights/clip/ViT-B-16.pt
+
+DATASETS:
+  DATA_LOCATION: ./Image
+  TRAIN: [Aircraft]
+  EVAL:  [Aircraft, Caltech101 , CIFAR100, DTD, EuroSAT, Flowers, Food, MNIST, OxfordPet, StanfordCars, SUN397]
+
+TRAIN:
+  BATCH_SIZE: 128 #256
+
+TEST:
+  BATCH_SIZE: 512
+
+SOLVER:
+  SEED: 42
+  LR: 0.001 #0.015 #0.03
+  LS: 0.0 #0.2
+  # WARMUP_LENGTH: 100
+  # BETA2: 0.999
+  # ITERATIONS: 1000
+  EPOCHS: 5
+  LOSS_INTERVAL: 20
+  EVAL_EVERY_EPOCH: True
+  SCHEDULE_UNIT: none
+VERSION: 2

@@ -22,10 +22,10 @@ pip install -r requirements.txt
 ```
 
 ## 📚 Dataset
-Open-Domain Continual Learning consists of 11 datasets from diverse domains, including `Aircraft`, `Caltech101`,`CIFAR10`, `CIFAR100`, `DTD`, `EuroSAT`, `Flowers`, `Food`, `MNIST`, `OxfordPet`,`StanfordCars` and `SUN397`.
+Open-Domain Continual Learning consists of 11 datasets from diverse domains, including `Aircraft`, `Caltech101`, `CIFAR100`, `DTD`, `EuroSAT`, `Flowers`, `Food`, `MNIST`, `OxfordPet`,`StanfordCars` and `SUN397`.
 
 1. Create a dataset root diretory, _e.g._, `Image`.
-2. Datasets such as `Aircraft`, `Caltech101`, `CIFAR10`, etc., will be automatically downloaded.  You can refer to [datasets.md](https://github.com/Thunderbeee/ZSCL/blob/main/mtil/datasets.md) for more details.
+2. Datasets such as `Aircraft`, `Caltech101`, `CIFAR100`, etc., will be automatically downloaded.  You can refer to [datasets.md](https://github.com/Thunderbeee/ZSCL/blob/main/mtil/datasets.md) for more details.
 
 You can also refer to the following download paths for each dataset:
 [Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.tar.gz), [Caltech101](https://data.caltech.edu/records/mzrjq-6wc02), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz), [DTD](https://www.robots.ox.ac.uk/~vgg/data/dtd/download/dtd-r1.0.1.tar.gz), [EuroSAT](https://madm.dfki.de/files/sentinel/EuroSAT.zip), [Flowers](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/), [Food](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz), [MNIST](http://yann.lecun.com/exdb/mnist/), [OxfordPet](https://www.robots.ox.ac.uk/~vgg/data/pets), [StanfordCars](https://ai.stanford.edu/~jkrause/car196/cars_train.tgz), [SUN397](http://vision.princeton.edu/projects/2010/SUN/SUN397.tar.gz)
